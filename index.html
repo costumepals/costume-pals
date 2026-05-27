@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Costume Pals – Elevating Every Celebration</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --black: #0a0a0a;
+    --pink: #ff1f8e;
+    --pink-light: #ff6ab5;
+    --purple: #b07cff;
+    --purple-dark: #7c3aed;
+    --white: #ffffff;
+    --card-bg: #141414;
+    --card-border: #2a2a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #222;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .nav-brand {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0.2rem;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.35rem 0.6rem;
+    border-radius: 20px;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .nav-links a:hover {
+    background: var(--pink);
+    color: #fff;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 30%, rgba(176,124,255,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,31,142,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 70%, rgba(255,31,142,0.1) 0%, transparent 60%);
+  }
+  /* floating bubbles */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.12;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(100vh) scale(0.8); opacity: 0; }
+    10%  { opacity: 0.12; }
+    90%  { opacity: 0.08; }
+    100% { transform: translateY(-20vh) scale(1.1); opacity: 0; }
+  }
+  .hero-logo-text {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    line-height: 0.9;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 50%, #ff6ab5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 40px rgba(255,31,142,0.4));
+    animation: popIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes popIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  .hero-tagline {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1rem, 3.5vw, 1.6rem);
+    color: var(--purple);
+    letter-spacing: 0.08em;
+    margin-top: 0.6rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s 0.3s both;
+  }
+  .hero-sub {
+    font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+    color: #bbb;
+    max-width: 560px;
+    margin: 1.4rem auto 2.4rem;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s 0.5s both;
+  }
+  .hero-cta {
+    display: inline-flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s 0.7s both;
+  }
+  .btn {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.05rem;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--pink), var(--purple-dark));
+    color: #fff;
+    box-shadow: 0 6px 30px rgba(255,31,142,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 10px 40px rgba(255,31,142,0.55); }
+  .btn-outline {
+    background: transparent;
+    color: var(--purple);
+    border: 2px solid var(--purple);
+  }
+  .btn-outline:hover { background: var(--purple); color: #fff; transform: translateY(-2px); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--pink);
+    background: rgba(255,31,142,0.12);
+    border: 1px solid rgba(255,31,142,0.3);
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--white) 30%, var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.6rem;
+  }
+  .section-desc {
+    color: #999;
+    font-size: 1rem;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--pink);
+    box-shadow: 0 16px 50px rgba(255,31,142,0.15);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .card:hover::before { opacity: 1; }
+
+  .card-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    color: var(--pink-light);
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── PRICING TABLE ── */
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #222;
+    font-size: 0.95rem;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-label { color: #ccc; font-weight: 600; }
+  .price-val {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    color: var(--purple);
+  }
+  .price-note {
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    color: #888;
+    line-height: 1.5;
+    padding: 0.8rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    border-left: 3px solid var(--pink);
+  }
+
+  /* ── GRID LAYOUTS ── */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+
+  /* ── CHARACTER LIST ── */
+  .char-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .char-chip {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #333;
+    border-radius: 50px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #ddd;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .char-chip:hover { background: var(--pink); border-color: var(--pink); color: #fff; }
+
+  /* ── SPECIAL BADGE ── */
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--pink), var(--purple-dark));
+    color: #fff;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.85rem;
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+  }
+
+  /* ── FOAM PARTY ── */
+  .foam-big-price {
+    font-family: 'Fredoka One', cursive;
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin: 0.5rem 0 1.2rem;
+  }
+  .foam-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .foam-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: #ccc;
+    font-weight: 600;
+  }
+  .foam-features li::before {
+    content: '✦';
+    color: var(--pink);
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOD COURT ── */
+  .food-tier {
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--card-border);
+  }
+  .food-tier-standard { background: linear-gradient(135deg, rgba(255,31,142,0.08), rgba(255,31,142,0.03)); border-color: rgba(255,31,142,0.3); }
+  .food-tier-premium  { background: linear-gradient(135deg, rgba(176,124,255,0.12), rgba(176,124,255,0.03)); border-color: rgba(176,124,255,0.4); }
+  .food-tier-label {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+  .food-tier-standard .food-tier-label { color: var(--pink-light); }
+  .food-tier-premium  .food-tier-label { color: var(--purple); }
+  .food-price-row {
+    display: flex;
+    gap: 1rem;
+    margin: 0.8rem 0 1rem;
+  }
+  .food-price-pill {
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 0.4rem 0.9rem;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.05rem;
+    color: var(--white);
+  }
+  .food-restaurants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .food-tag {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #bbb;
+  }
+
+  /* ── CHRISTMAS SECTION ── */
+  #christmas {
+    background: linear-gradient(180deg, rgba(180,0,0,0.07) 0%, transparent 100%);
+    border-top: 1px solid rgba(200,30,30,0.2);
+    border-bottom: 1px solid rgba(200,30,30,0.2);
+  }
+  .xmas-card { border-color: rgba(200,30,30,0.3); }
+  .xmas-card:hover { border-color: #ff4444; box-shadow: 0 16px 50px rgba(255,50,50,0.15); }
+  .xmas-card .card-title { color: #ff6666; }
+  .xmas-card .price-val { color: #ff8888; }
+  .xmas-char-chip { background: rgba(200,30,30,0.1); border-color: rgba(200,30,30,0.3); color: #ffaaaa; }
+  .xmas-char-chip:hover { background: #cc2222; border-color: #cc2222; color: #fff; }
+  .snow { position: absolute; pointer-events: none; font-size: 1.2rem; animation: snowfall linear infinite; opacity: 0; }
+  @keyframes snowfall {
+    0%   { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateY(300px) rotate(360deg); opacity: 0; }
+  }
+
+  /* ── TRAVEL NOTE BANNER ── */
+  .travel-banner {
+    background: linear-gradient(135deg, rgba(255,31,142,0.1), rgba(176,124,255,0.1));
+    border: 1px solid rgba(255,31,142,0.3);
+    border-radius: 16px;
+    padding: 1.2rem 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.92rem;
+    color: #ddd;
+    font-weight: 700;
+  }
+  .travel-icon { font-size: 1.6rem; flex-shrink: 0; }
+
+  /* ── BUNDLE HIGHLIGHT ── */
+  .bundle-highlight {
+    background: linear-gradient(135deg, rgba(255,31,142,0.12), rgba(176,124,255,0.12));
+    border: 1.5px solid var(--pink);
+    border-radius: 14px;
+    padding: 1rem 1.4rem;
+    margin-top: 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--pink-light);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-top: 1px solid #1e1e1e;
+    color: #555;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+  footer .footer-brand {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2a2a2a, transparent);
+    margin: 0;
+  }
+
+  /* ── CONTACT / BOOKING ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.4rem;
+    margin-bottom: 2rem;
+  }
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .ig-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(240,148,51,0.15), rgba(188,24,136,0.15));
+    border: 1px solid rgba(240,148,51,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1rem;
+    flex-shrink: 0;
+  }
+  .contact-card-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #666;
+    margin-bottom: 0.35rem;
+  }
+  .contact-handle {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    color: #cc2366;
+    background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+  }
+  .contact-card-desc {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.65;
+    margin-bottom: 1.4rem;
+    flex: 1;
+  }
+  .contact-btn {
+    display: inline-block;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.92rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    width: 100%;
+    text-align: center;
+  }
+  .contact-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+  .contact-btn-ig {
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(220,39,67,0.35);
+  }
+  .contact-btn-book {
+    background: linear-gradient(135deg, var(--pink), var(--purple-dark));
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(255,31,142,0.35);
+  }
+  .contact-btn-photos {
+    background: transparent;
+    color: var(--purple);
+    border: 2px solid var(--purple);
+  }
+  .contact-btn-photos:hover { background: var(--purple); color: #fff; }
+
+  .response-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: linear-gradient(135deg, rgba(255,31,142,0.07), rgba(176,124,255,0.07));
+    border: 1px solid rgba(255,31,142,0.2);
+    border-radius: 16px;
+    padding: 1.4rem 1.8rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links a { font-size: 0.7rem; padding: 0.3rem 0.45rem; }
+    section { padding: 3.5rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <span class="nav-brand">Costume Pals</span>
+  <ul class="nav-links">
+    <li><a href="#characters">Characters</a></li>
+    <li><a href="#foam">Foam</a></li>
+    <li><a href="#addons">Add-Ons</a></li>
+    <li><a href="#food">Food Court</a></li>
+    <li><a href="#christmas">Holiday</a></li>
+    <li><a href="#contact" style="background:linear-gradient(135deg,#ff1f8e,#7c3aed);color:#fff;">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <!-- animated bubbles -->
+  <div class="hero-bg"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hero = document.querySelector('.hero');
+      const colors = ['#ff1f8e','#b07cff','#ff6ab5','#7c3aed'];
+      for (let i = 0; i < 14; i++) {
+        const b = document.createElement('div');
+        b.className = 'bubble';
+        const size = 20 + Math.random() * 60;
+        b.style.cssText = `
+          width:${size}px; height:${size}px;
+          background:${colors[Math.floor(Math.random()*colors.length)]};
+          left:${Math.random()*100}%;
+          bottom:-80px;
+          animation-duration:${7+Math.random()*10}s;
+          animation-delay:${Math.random()*8}s;
+        `;
+        hero.appendChild(b);
+      }
+    });
+  </script>
+
+  <div class="hero-logo-text">Costume Pals</div>
+  <div class="hero-tagline">✨ Elevating Every Celebration ✨</div>
+  <p class="hero-sub">
+    Bringing your kids' favorite characters to life — from princess meet-and-greets and foam parties to food courts and holiday magic. Based in Staten Island, NY.
+  </p>
+  <div class="hero-cta">
+    <a href="#characters" class="btn btn-primary">View Characters & Pricing</a>
+    <a href="#addons" class="btn btn-outline">See Add-Ons</a>
+  </div>
+</section>
+
+<!-- ── CHARACTER PRICING ── -->
+<section id="characters">
+  <div class="section-inner">
+    <div class="section-tag">⭐ Character Experiences</div>
+    <h2 class="section-title">Character Pricing</h2>
+    <p class="section-desc">Choose your character type and session length. Every visit is packed with magic your little ones will never forget.</p>
+
+    <div class="travel-banner">
+      <span class="travel-icon">🚗</span>
+      <span>For parties <strong>off of Staten Island</strong>, a <strong>$60 travel fee</strong> applies. An additional character can be added to any package for just <strong>$150!</strong></span>
+    </div>
+
+    <div class="grid-2">
+      <!-- Meet & Greet -->
+      <div class="card">
+        <div class="badge">Meet & Greets</div>
+        <div class="card-title">🎭 Mascots</div>
+        <div class="price-row">
+          <span class="price-label">30 Minutes</span>
+          <span class="price-val">$200</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">60 Minutes</span>
+          <span class="price-val">$325</span>
+        </div>
+        <p class="price-note">Full-body costumed mascot characters — great for photos and hugs!</p>
+      </div>
+
+      <div class="card">
+        <div class="badge">Meet & Greets</div>
+        <div class="card-title">👸 Interactives</div>
+        <div class="price-row">
+          <span class="price-label">30 Minutes</span>
+          <span class="price-val">$225</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">60 Minutes</span>
+          <span class="price-val">$375</span>
+        </div>
+        <p class="price-note">Live-action interactive performers — princesses, heroes & more who talk, sing, and engage with your guests!</p>
+      </div>
+    </div>
+
+    <!-- AVAILABLE CHARACTERS -->
+    <div style="margin-top: 3rem;">
+      <div class="section-tag">🎪 Who's Available</div>
+      <h3 style="font-family:'Fredoka One',cursive; font-size:1.8rem; color:var(--white); margin-bottom:0.5rem;">Available Characters</h3>
+      <p style="color:#999; margin-bottom:1.5rem; font-size:0.95rem;">Hover over a character to highlight. Can't find your favorite? Reach out and we'll try to make it happen!</p>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">🐭 Mascots</div>
+          <div class="char-list">
+            <span class="char-chip">Mickey Mouse</span>
+            <span class="char-chip">Minnie Mouse</span>
+            <span class="char-chip">Buzz</span>
+            <span class="char-chip">Woody</span>
+            <span class="char-chip">Elmo</span>
+            <span class="char-chip">Cookie Monster</span>
+            <span class="char-chip">Bluey</span>
+            <span class="char-chip">JJ Cocomelon</span>
+            <span class="char-chip">Stitch</span>
+            <span class="char-chip">Sonic</span>
+            <span class="char-chip">Baby Shark</span>
+            <span class="char-chip">Chase (Paw Patrol)</span>
+            <span class="char-chip">Skye (Paw Patrol)</span>
+            <span class="char-chip">All Ninja Turtles</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">👑 Interactives</div>
+          <div class="char-list">
+            <span class="char-chip">Belle</span>
+            <span class="char-chip">Cinderella</span>
+            <span class="char-chip">Snow White</span>
+            <span class="char-chip">Tinkerbell</span>
+            <span class="char-chip">Elsa</span>
+            <span class="char-chip">Ms Rachel</span>
+            <span class="char-chip">Red the Descendant</span>
+            <span class="char-chip">Ariel</span>
+            <span class="char-chip">Moana</span>
+            <span class="char-chip">Jasmine</span>
+            <span class="char-chip">Spiderman</span>
+            <span class="char-chip">Batman</span>
+            <span class="char-chip">Captain America</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FOAM PARTIES ── -->
+<section id="foam">
+  <div class="section-inner">
+    <div class="section-tag">🫧 Foam Parties</div>
+    <h2 class="section-title">Foam Parties</h2>
+    <p class="section-desc">Turn your backyard into a foam wonderland! Our cannon fills a massive 30×40 ft area up to 5 feet high — kids absolutely love it.</p>
+
+    <div class="card" style="max-width:680px;">
+      <div class="card-title">Everything Included</div>
+      <div class="foam-big-price">$575</div>
+      <ul class="foam-features">
+        <li>60 minutes of non-stop foam</li>
+        <li>Two professionally trained operators</li>
+        <li>Music provided</li>
+        <li>Beach balls &amp; noodles included</li>
+        <li>Cannon fills 30×40 ft area, 5 feet high!</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ADD-ONS ── -->
+<section id="addons">
+  <div class="section-inner">
+    <div class="section-tag">✨ Extras</div>
+    <h2 class="section-title">Add-Ons</h2>
+    <p class="section-desc">Level up any party package with these crowd-pleasing extras. Mix and match to create the perfect celebration!</p>
+
+    <div class="grid-3">
+
+      <!-- Face Painting -->
+      <div class="card">
+        <div class="card-title">🎨 Face Painting</div>
+        <div class="price-row">
+          <span class="price-label">1 hr · up to 12 kids</span>
+          <span class="price-val">$145</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">1.5 hrs · up to 18 kids</span>
+          <span class="price-val">$220</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">2 hrs · up to 24 kids</span>
+          <span class="price-val">$290</span>
+        </div>
+        <div class="bundle-highlight">🎉 Bundle Deal!<br>1 hr face painting + 30 min glitter tattoos for up to 18 kids — <strong>$200!</strong></div>
+      </div>
+
+      <!-- Glitter Tattoos -->
+      <div class="card">
+        <div class="card-title">✨ Glitter Tattoos</div>
+        <div class="price-row">
+          <span class="price-label">1 hr · up to 18 kids</span>
+          <span class="price-val">$150</span>
+        </div>
+        <p class="price-note" style="margin-top:1rem;">Sparkling glitter tattoos that kids love — safe, fun, and totally Instagram-worthy!</p>
+      </div>
+
+      <!-- Sno Cones / Popcorn / Cotton Candy -->
+      <div class="card">
+        <div class="card-title">🍭 Treat Stations</div>
+        <p style="color:#aaa; font-size:0.88rem; margin-bottom:1rem; font-weight:600;">Sno Cones, Popcorn, or Cotton Candy</p>
+        <div class="price-row">
+          <span class="price-label">Any One</span>
+          <span class="price-val">$175</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">Any Two</span>
+          <span class="price-val">$300</span>
+        </div>
+        <p class="price-note">All treat stations include a dedicated attendant to keep the fun flowing all party long!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FOOD COURT ── -->
+<section id="food">
+  <div class="section-inner">
+    <div class="section-tag">🍔 Food Court</div>
+    <h2 class="section-title">Food Court</h2>
+    <p class="section-desc">We bring the restaurant experience to your party — choose from popular fast food favorites, and we'll handle delivery and setup!</p>
+
+    <div class="travel-banner" style="margin-bottom:2rem;">
+      <span class="travel-icon">📋</span>
+      <span><strong>Base setup fee: $250</strong> — includes service for up to 25 guests. Additional guests are <strong>$16 per person.</strong></span>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:1.5rem;">
+      <!-- Standard -->
+      <div class="food-tier food-tier-standard">
+        <div class="food-tier-label">Standard</div>
+        <div class="food-price-row">
+          <div class="food-price-pill">Choose 1 — $595</div>
+          <div class="food-price-pill">Choose 2 — $695</div>
+        </div>
+        <div class="food-restaurants">
+          <span class="food-tag">McDonald's</span>
+          <span class="food-tag">Wendy's</span>
+          <span class="food-tag">Burger King</span>
+          <span class="food-tag">Taco Bell</span>
+          <span class="food-tag">White Castle</span>
+        </div>
+      </div>
+
+      <!-- Premium -->
+      <div class="food-tier food-tier-premium">
+        <div class="food-tier-label">Premium</div>
+        <div class="food-price-row">
+          <div class="food-price-pill">Choose 1 — $795</div>
+          <div class="food-price-pill">Choose 2 — $950</div>
+        </div>
+        <div class="food-restaurants">
+          <span class="food-tag">Shake Shack</span>
+          <span class="food-tag">Five Guys</span>
+          <span class="food-tag">Popeyes</span>
+          <span class="food-tag">Chick-fil-A</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mix tier -->
+    <div class="bundle-highlight" style="max-width:500px; margin:0 auto; font-size:1rem; padding:1.2rem 2rem;">
+      🍟 Mix it up! Select <strong>one Standard + one Premium</strong> for just <strong>$850</strong>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CHRISTMAS / HOLIDAY ── -->
+<section id="christmas">
+  <div class="section-inner" style="position:relative; overflow:hidden;">
+    <!-- snowflakes -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const sec = document.querySelector('#christmas .section-inner');
+        const flakes = ['❄️','⛄','🎅','🦌'];
+        for (let i = 0; i < 10; i++) {
+          const s = document.createElement('span');
+          s.className = 'snow';
+          s.textContent = flakes[Math.floor(Math.random()*flakes.length)];
+          s.style.cssText = `
+            left:${Math.random()*100}%;
+            top:0;
+            animation-duration:${6+Math.random()*6}s;
+            animation-delay:${Math.random()*6}s;
+          `;
+          sec.appendChild(s);
+        }
+      });
+    </script>
+
+    <div class="section-tag" style="color:#ff6666; background:rgba(200,30,30,0.12); border-color:rgba(200,30,30,0.3);">🎄 Holiday Specials</div>
+    <h2 class="section-title" style="background: linear-gradient(135deg, #fff 30%, #ff6666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Holiday Characters</h2>
+    <p class="section-desc">Bring the magic of the season to life with our special holiday lineup — perfect for school events, corporate parties, and family gatherings!</p>
+
+    <div class="grid-2">
+      <!-- Santa -->
+      <div class="card xmas-card">
+        <div class="card-title">🎅 Santa Claus</div>
+        <div class="price-row">
+          <span class="price-label">30 Minutes</span>
+          <span class="price-val" style="color:#ff8888;">$300</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">60 Minutes</span>
+          <span class="price-val" style="color:#ff8888;">$375</span>
+        </div>
+        <p class="price-note" style="border-left-color:#cc2222;">For multi-hour visits: First hour <strong style="color:#ffaaaa;">$250</strong>, each additional hour <strong style="color:#ffaaaa;">$125</strong></p>
+      </div>
+
+      <!-- Other Holiday Characters -->
+      <div class="card xmas-card">
+        <div class="card-title">⛄ Other Holiday Characters</div>
+        <div class="price-row">
+          <span class="price-label">30 Minutes</span>
+          <span class="price-val" style="color:#ff8888;">$175</span>
+        </div>
+        <div class="char-list" style="margin-top:1.2rem;">
+          <span class="char-chip xmas-char-chip">The Grinch</span>
+          <span class="char-chip xmas-char-chip">Christmas Mickey</span>
+          <span class="char-chip xmas-char-chip">Christmas Minnie</span>
+          <span class="char-chip xmas-char-chip">Olaf</span>
+          <span class="char-chip xmas-char-chip">Gingerbreadman</span>
+          <span class="char-chip xmas-char-chip">Santa Stitch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT / BOOKING ── -->
+<div class="divider"></div>
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">📩 Get In Touch</div>
+    <h2 class="section-title">Book Your Experience</h2>
+    <p class="section-desc">Ready to make your celebration unforgettable? Booking is quick and easy — reach us on Instagram and we'll get back to you as soon as possible!</p>
+
+    <div class="contact-grid">
+
+      <!-- Instagram Card -->
+      <div class="card contact-card contact-ig">
+        <div class="ig-icon-wrap">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#f09433"/>
+                <stop offset="25%" stop-color="#e6683c"/>
+                <stop offset="50%" stop-color="#dc2743"/>
+                <stop offset="75%" stop-color="#cc2366"/>
+                <stop offset="100%" stop-color="#bc1888"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad)" stroke-width="2" fill="none"/>
+            <circle cx="12" cy="12" r="4.5" stroke="url(#ig-grad)" stroke-width="2" fill="none"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-grad)"/>
+          </svg>
+        </div>
+        <div class="contact-card-label">Find Us on Instagram</div>
+        <div class="contact-handle">@CostumePals</div>
+        <p class="contact-card-desc">
+          Follow us for photos from real parties, character sneak peeks, and updates on new additions to our lineup!
+        </p>
+        <a href="https://www.instagram.com/CostumePals" target="_blank" rel="noopener" class="contact-btn contact-btn-ig">
+          Visit @CostumePals on Instagram
+        </a>
+      </div>
+
+      <!-- Booking Card -->
+      <div class="card contact-card contact-book">
+        <div class="ig-icon-wrap" style="background:linear-gradient(135deg,rgba(255,31,142,0.18),rgba(124,58,237,0.18)); border-color:rgba(255,31,142,0.3);">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="4" width="18" height="17" rx="3" stroke="#ff1f8e" stroke-width="2" fill="none"/>
+            <path d="M8 2v4M16 2v4M3 10h18" stroke="#ff1f8e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" stroke="#b07cff" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="contact-card-label">Easy Online Booking</div>
+        <div class="contact-handle" style="background:linear-gradient(135deg,var(--pink),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Google Form in Our Bio</div>
+        <p class="contact-card-desc">
+          Head to our Instagram bio to access our simple booking form. Fill in your event details — date, character, package — and we'll reach back out to you <strong style="color:var(--pink-light);">as soon as possible</strong> to confirm everything!
+        </p>
+        <a href="https://www.instagram.com/CostumePals" target="_blank" rel="noopener" class="contact-btn contact-btn-book">
+          📋 Book Now via Instagram Bio
+        </a>
+      </div>
+
+      <!-- Photos Card -->
+      <div class="card contact-card contact-photos">
+        <div class="ig-icon-wrap" style="background:linear-gradient(135deg,rgba(176,124,255,0.18),rgba(124,58,237,0.18)); border-color:rgba(176,124,255,0.3);">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="5" width="20" height="15" rx="3" stroke="#b07cff" stroke-width="2" fill="none"/>
+            <circle cx="12" cy="12.5" r="3.5" stroke="#b07cff" stroke-width="2" fill="none"/>
+            <path d="M9 5l1.5-2h3L15 5" stroke="#b07cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18" cy="9" r="1" fill="#b07cff"/>
+          </svg>
+        </div>
+        <div class="contact-card-label">See the Magic in Action</div>
+        <div class="contact-handle" style="color:var(--purple);">Party Photos &amp; Gallery</div>
+        <p class="contact-card-desc">
+          Check out our Instagram page for real photos from past celebrations! See our characters in action, get inspired for your own party, and browse looks before you book.
+        </p>
+        <a href="https://www.instagram.com/CostumePals" target="_blank" rel="noopener" class="contact-btn contact-btn-photos">
+          📸 View Photos on Instagram
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Response promise banner -->
+    <div class="response-banner">
+      <span style="font-size:1.5rem;">⚡</span>
+      <div>
+        <div style="font-family:'Fredoka One',cursive; font-size:1.1rem; color:var(--white); margin-bottom:0.2rem;">We respond fast!</div>
+        <div style="font-size:0.88rem; color:#aaa; line-height:1.5;">After you submit the booking form in our Instagram bio, our team will reach out to you as soon as possible to confirm your date, character, and package details. We can't wait to make your celebration magical! ✨</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-brand">Costume Pals</span>
+  <div style="color:var(--purple); font-family:'Fredoka One',cursive; font-size:0.95rem; margin-bottom:0.8rem;">✨ Elevating Every Celebration ✨</div>
+  <div style="margin-bottom:0.6rem;">
+    <a href="https://www.instagram.com/CostumePals" target="_blank" rel="noopener" style="color:var(--pink-light); text-decoration:none; font-weight:700; font-size:0.95rem;">📸 @CostumePals on Instagram</a>
+  </div>
+  <p>Based in Staten Island, NY &nbsp;·&nbsp; $60 travel fee for off-island parties</p>
+  <p style="margin-top:0.5rem;">© 2025 Costume Pals. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
